@@ -1,0 +1,128 @@
+
+<Doctype html>
+
+    <html>
+         <head>
+            <!--informaçõies que não aparece na pagina -->
+            <title>Logica de programação Javascript</title>
+            <!--charset="utf-8" para utilizar acento no seu documento-->
+            <meta charset="utf-8">
+    
+            <style>
+
+                body{
+                    width: 30% ;
+                    padding: 10px;
+                    border: 2px solid;
+                    height: 70%;
+                }
+                
+                button{
+                 width: 10% ;
+                 height: 10% ;
+                 padding: 8px;
+                 border: 2px solid #808080	;
+                 margin: 3%;
+                 font-size:larger;
+                 
+                }
+                #limpar {
+                    width: 90px;
+                    
+                    
+                }
+                .j{
+                    width: 50px;
+                }
+                .dado{
+                    width: 50%;
+                    margin: 5%;
+                    padding: 15%;
+                    border: 3px solid black;
+
+                }
+                
+                       
+            </style>
+         </head>
+       <!--Tag script para interpretar as logicas que vão se escrita dentro -->
+    
+         <body>
+            <h1>CALCULADORA</h1>
+            <div>
+            <button onclick="definirOperacao(' + ')">+</button>
+            <button  onclick="definirOperacao(' - ')">-</button>
+            <button onclick="definirOperacao(' * ')">*</button>
+            <button onclick="definirOperacao(' / ')">/</button>
+            <button id="limpar" onclick="limparTabuada()">LIMPAR</button>
+        </div>
+        <div>    
+            <button class="a" onclick="exibirCaracter(1)">1</button>
+            <button  class="a" onclick="exibirCaracter(2)">2</button>
+            <button  class="a" onclick="exibirCaracter(3)">3</button>
+            <button class="b" onclick="exibirCaracter(4)">4</button>
+            <button class="b" onclick="exibirCaracter(5)">5</button>
+            <button class="b" onclick="exibirCaracter(6)">6</button>
+            <button class="c" onclick="exibirCaracter(7)">7</button>
+            <button class="c" onclick="exibirCaracter(8)">8</button>
+            <button class="c" onclick="exibirCaracter(9)">9</button>
+            <button class="j" onclick="Igual('=')">=</button>
+        </div>       
+            
+          <div id="exibicao" class="dado"> </div>
+            
+            <script>
+                    var numeroAtual = '', primeiroNumero, segundoNumero, opereracao;
+
+                    function exibirCaracter(value)
+                    {
+                        document.getElementById("exibicao").innerText += value;
+                        numeroAtual += value;
+                        
+                        console.log(numeroAtual)
+                       
+                        
+                    }
+                    function limparTabuada(){
+
+                    document.getElementById("exibicao").innerText = "";
+                    numeroAtual = ''
+                    primeiroNumero = 0;
+                    segundoNumero = 0;
+
+
+                    }
+
+                    function definirOperacao(value)
+                    {
+                        document.getElementById("exibicao").innerText += value;
+                        opereracao = value;
+                        primeiroNumero = Number(numeroAtual);
+                        numeroAtual = '';
+
+                    }
+                   
+                    function Igual()
+                    {
+                        segundoNumero = Number(numeroAtual);
+                        var restulado = EfetuarCalculo()
+                        document.getElementById("exibicao").innerText += ' = '+ restulado;
+                        
+                }  
+               
+                
+                function EfetuarCalculo()
+                {
+                    switch(opereracao){
+                            case ' + ':  return primeiroNumero + segundoNumero;
+                            case ' - ':  return primeiroNumero - segundoNumero;
+                            case ' * ':  return primeiroNumero * segundoNumero;
+                            case ' / ':  return primeiroNumero / segundoNumero;
+                            default: null;
+                    }
+
+                   
+                }
+            </script>
+         </body>
+    </html>
